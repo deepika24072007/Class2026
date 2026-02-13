@@ -297,7 +297,7 @@ const CLASS_DATA = {
             name: "Mrs. J. Nandhini Arun",
             role: "Class Advisor & AP / CSE",
             subjects: "IOS, OS Lab",
-            photo: "https://api.dicebear.com/7.x/avataaars/svg?seed=Nandhini",
+            photo: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=300&h=300",
             email: "nandhini@example.com"
         },
         {
@@ -305,7 +305,7 @@ const CLASS_DATA = {
             name: "Mr. P. Kapil Das",
             role: "Assistant Professor / CSE",
             subjects: "Theory of Computation",
-            photo: "https://api.dicebear.com/7.x/avataaars/svg?seed=Kapil",
+            photo: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=300&h=300",
             email: "kapil@example.com"
         },
         {
@@ -313,7 +313,7 @@ const CLASS_DATA = {
             name: "Ms. I. Sariga",
             role: "Assistant Professor / CSE",
             subjects: "AI & ML",
-            photo: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sariga",
+            photo: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=300&h=300",
             email: "sariga@example.com"
         },
         {
@@ -321,7 +321,7 @@ const CLASS_DATA = {
             name: "Ms. R. Priya",
             role: "Assistant Professor / CSE",
             subjects: "DBMS, DBMS Lab",
-            photo: "https://api.dicebear.com/7.x/avataaars/svg?seed=Priya",
+            photo: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=300&h=300",
             email: "priya@example.com"
         },
         {
@@ -329,15 +329,15 @@ const CLASS_DATA = {
             name: "Mrs. S. Angelkeruba",
             role: "Assistant Professor / CSE",
             subjects: "Algorithms",
-            photo: "https://api.dicebear.com/7.x/avataaars/svg?seed=Angel",
+            photo: "https://images.unsplash.com/photo-1598550832205-d5b5fe4d03e8?auto=format&fit=crop&q=80&w=300&h=300",
             email: "angel@example.com"
         },
         {
             id: 's6',
             name: "Mrs. R. Chitra",
-            role: "HOD / CHE",
-            subjects: "EVS",
-            photo: "https://api.dicebear.com/7.x/avataaars/svg?seed=Chitra",
+            role: "Assistant Professor / English",
+            subjects: "English",
+            photo: "https://images.unsplash.com/photo-1551836022-4c4c79ca8485?auto=format&fit=crop&q=80&w=300&h=300",
             email: "chitra@example.com"
         },
         {
@@ -345,16 +345,16 @@ const CLASS_DATA = {
             name: "Mr. R. Saravana Kumar",
             role: "Placement Officer",
             subjects: "Placement Hour",
-            photo: "https://api.dicebear.com/7.x/avataaars/svg?seed=Saravana",
+            photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=300&h=300",
             email: "saravana@example.com"
         },
         {
             id: 's8',
-            name: "Mrs. S. Ushen Bibi",
-            role: "Librarian / CSE",
-            subjects: "Library",
-            photo: "https://api.dicebear.com/7.x/avataaars/svg?seed=Ushen",
-            email: "ushen@example.com"
+            name: "Mr. M. Perumal",
+            role: "Assistant Professor / Maths",
+            subjects: "Probability & Queueing Theory",
+            photo: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=300&h=300",
+            email: "perumal@example.com"
         }
     ],
     representatives: [
