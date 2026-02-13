@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class 2026 Portal | CSE Department</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Favicon -->
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+</head>
+
+<body>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-content">
+            <div class="loader-logo">🎓</div>
+            <div class="loader-text">Loading Class of 2026...</div>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header with Sticky Navigation -->
+    <header id="header">
+        <a href="#" class="logo">
+            <span class="logo-icon">🎓</span>
+            <span class="logo-text">CLASS 2026</span>
+        </a>
+        <button class="mobile-menu-toggle" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav id="main-nav">
+            <ul>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#timetable">Schedule</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#staff">Faculty</a></li>
+                <li><a href="#students">Students</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section with Parallax -->
+    <section id="hero" class="parallax-section">
+        <div class="parallax-bg" data-speed="0.5"></div>
+        <div class="parallax-layer layer-1" data-speed="0.3">
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+            <div class="floating-shape shape-3"></div>
+        </div>
+
+        <div class="hero-content parallax-layer" data-speed="0.7">
+            <div id="birthday-container" style="display: none;"></div>
+            <span class="dept-name animate-on-scroll" data-animation="fade-up">Department of Computer Science</span>
+            <h1 class="class-title animate-on-scroll" data-animation="fade-up" data-delay="100">Future Innovators</h1>
+            <p class="animate-on-scroll" data-animation="fade-up" data-delay="200">Welcome to the official portal of the
+                Class of 2026. Here we celebrate our journey, achievements, and future.</p>
+            <div class="hero-cta animate-on-scroll" data-animation="fade-up" data-delay="300">
+                <a href="#students" class="btn-primary">Meet Our Class</a>
+                <a href="#resources" class="btn-secondary">Explore Resources</a>
+            </div>
+        </div>
+
+        <div class="hero-stats parallax-layer" data-speed="0.8">
+            <div class="stat-item animate-on-scroll" data-animation="scale-up">
+                <span class="stat-number" id="stats-students">0</span>
+                <span class="stat-label">Students</span>
+            </div>
+            <div class="stat-item animate-on-scroll" data-animation="scale-up" data-delay="100">
+                <span class="stat-number" id="stats-achievements">0</span>
+                <span class="stat-label">Achievements</span>
+            </div>
+            <div class="stat-item animate-on-scroll" data-animation="scale-up" data-delay="200">
+                <span class="stat-number">2026</span>
+                <span class="stat-label">Graduation Year</span>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <span>Scroll to explore</span>
+        </div>
+    </section>
+
+    <!-- Stats Section with Parallax -->
+    <section id="quick-stats" class="parallax-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card animate-on-scroll" data-animation="fade-up">
+                    <div class="stat-icon">📚</div>
+                    <h3><span class="stat-counter" data-target="8">0</span> Subjects</h3>
+                    <p>Comprehensive curriculum</p>
+                </div>
+                <div class="stat-card animate-on-scroll" data-animation="fade-up" data-delay="100">
+                    <div class="stat-icon">👨‍🏫</div>
+                    <h3><span class="stat-counter" data-target="8">0</span> Faculty</h3>
+                    <p>Experienced educators</p>
+                </div>
+                <div class="stat-card animate-on-scroll" data-animation="fade-up" data-delay="200">
+                    <div class="stat-icon">🏆</div>
+                    <h3><span class="stat-counter" data-target="15">0</span>+</h3>
+                    <p>Awards & recognitions</p>
+                </div>
+                <div class="stat-card animate-on-scroll" data-animation="fade-up" data-delay="300">
+                    <div class="stat-icon">💼</div>
+                    <h3><span class="stat-counter" data-target="100">0</span>%</h3>
+                    <p>Placement target</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Announcements Section -->
+    <section id="announcements" class="parallax-section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll" data-animation="fade-up">Latest Updates</h2>
+            <div class="grid" id="announcements-grid">
+                <!-- Announcements injected here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Time Table Section with Enhanced Design -->
+    <section id="timetable" class="parallax-section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll" data-animation="fade-up">Class Schedule</h2>
+            <p class="section-subtitle animate-on-scroll" data-animation="fade-up" data-delay="100">II Year / IV
+                Semester</p>
+            <div class="table-wrapper animate-on-scroll" data-animation="fade-up" data-delay="200">
+                <div class="table-container">
+                    <table class="timetable">
+                        <thead>
+                            <tr>
+                                <th class="day-col">Day / Time</th>
+                                <th>I<br>09:10-10:05</th>
+                                <th>II<br>10:05-11:00</th>
+                                <th class="break-col">Break<br>11:00-11:10</th>
+                                <th>III<br>11:10-12:05</th>
+                                <th>IV<br>12:05-01:00</th>
+                                <th class="break-col">Lunch<br>01:00-01:40</th>
+                                <th>V<br>01:40-02:35</th>
+                                <th>VI<br>02:35-03:30</th>
+                                <th>VII<br>03:40-04:35</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Monday -->
+                            <tr>
+                                <td class="day-col">Monday</td>
+                                <td>IOS</td>
+                                <td>EVS</td>
+                                <td class="break-col" rowspan="6">
+                                    <div class="vertical-text">BREAK</div>
+                                </td>
+                                <td>AIML</td>
+                                <td>TOC</td>
+                                <td class="break-col" rowspan="6">
+                                    <div class="vertical-text">LUNCH</div>
+                                </td>
+                                <td>ALGM</td>
+                                <td colspan="2">DBMS Lab</td>
+                            </tr>
+                            <!-- Tuesday -->
+                            <tr>
+                                <td class="day-col">Tuesday</td>
+                                <td>DBMS</td>
+                                <td>ALGM</td>
+                                <td>TOC</td>
+                                <td>DBMS</td>
+                                <td>IOS Lab</td>
+                                <td>AIML</td>
+                                <td>-</td>
+                            </tr>
+                            <!-- Wednesday -->
+                            <tr>
+                                <td class="day-col">Wednesday</td>
+                                <td colspan="2">AIML Lab</td>
+                                <td>IOS</td>
+                                <td>EVS</td>
+                                <td>PH</td>
+                                <td>DBMS</td>
+                                <td>EVS</td>
+                            </tr>
+                            <!-- Thursday -->
+                            <tr>
+                                <td class="day-col">Thursday</td>
+                                <td>TOC</td>
+                                <td>DBMS</td>
+                                <td>ALGM</td>
+                                <td>EVS</td>
+                                <td>IOS</td>
+                                <td>AIML</td>
+                                <td>TOC</td>
+                            </tr>
+                            <!-- Friday -->
+                            <tr>
+                                <td class="day-col">Friday</td>
+                                <td colspan="2">ALGM Lab</td>
+                                <td>AIML</td>
+                                <td>TOC</td>
+                                <td>EVS</td>
+                                <td>DBMS</td>
+                                <td>IOS</td>
+                            </tr>
+                            <!-- Saturday -->
+                            <tr>
+                                <td class="day-col">Saturday</td>
+                                <td>EVS</td>
+                                <td>TOC</td>
+                                <td>IOS</td>
+                                <td>AIML</td>
+                                <td>DBMS</td>
+                                <td>ALGM</td>
+                                <td>LIB</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section with Parallax -->
+    <section id="resources" class="parallax-section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll" data-animation="fade-up">Study Resources</h2>
+            <div class="grid" id="resources-grid">
+                <div class="card resource-card animate-on-scroll" data-animation="fade-up">
+                    <div class="res-icon">📚</div>
+                    <h3>Syllabus</h3>
+                    <p>Download the latest syllabus for all subjects (Reg 2021).</p>
+                    <a href="#" class="res-link">Download PDF</a>
+                </div>
+                <div class="card resource-card animate-on-scroll" data-animation="fade-up" data-delay="100">
+                    <div class="res-icon">📝</div>
+                    <h3>Lecture Notes</h3>
+                    <p>Class notes and PPTs shared by faculty members.</p>
+                    <a href="#" class="res-link">Access Folder</a>
+                </div>
+                <div class="card resource-card animate-on-scroll" data-animation="fade-up" data-delay="200">
+                    <div class="res-icon">❓</div>
+                    <h3>Question Banks</h3>
+                    <p>Previous year question papers and model exams.</p>
+                    <a href="#" class="res-link">View Papers</a>
+                </div>
+                <div class="card resource-card animate-on-scroll" data-animation="fade-up" data-delay="300">
+                    <div class="res-icon">📊</div>
+                    <h3>Results</h3>
+                    <p>Check your internal marks and semester results.</p>
+                    <a href="#" class="res-link">Check Results</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="parallax-section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll" data-animation="fade-up">Memories & Moments</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item animate-on-scroll" data-animation="scale-up">
+                    <img src="https://images.unsplash.com/photo-1525921429618-f513b4726617?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                        alt="College Event">
+                    <div class="gallery-overlay">
+                        <span>College Event</span>
+                    </div>
+                </div>
+                <div class="gallery-item animate-on-scroll" data-animation="scale-up" data-delay="100">
+                    <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                        alt="Students Studying">
+                    <div class="gallery-overlay">
+                        <span>Study Session</span>
+                    </div>
+                </div>
+                <div class="gallery-item animate-on-scroll" data-animation="scale-up" data-delay="200">
+                    <img src="https://images.unsplash.com/photo-1564981797816-1043664bf78d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                        alt="Lab Session">
+                    <div class="gallery-overlay">
+                        <span>Lab Work</span>
+                    </div>
+                </div>
+                <div class="gallery-item animate-on-scroll" data-animation="scale-up" data-delay="300">
+                    <img src="https://images.unsplash.com/photo-1590402494682-cd3fb53b1f70?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                        alt="Sports Day">
+                    <div class="gallery-overlay">
+                        <span>Sports Day</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Staff & Reps Section -->
+    <section id="staff" class="parallax-section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll" data-animation="fade-up">Faculty & Representatives</h2>
+            <div class="grid" id="staff-grid">
+                <!-- Staff cards will be injected here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Student Grid Section -->
+    <section id="students" class="parallax-section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll" data-animation="fade-up">Meet the Class</h2>
+
+            <!-- Search/Filter -->
+            <div class="student-controls animate-on-scroll" data-animation="fade-up" data-delay="100">
+                <div class="search-wrapper">
+                    <input type="text" id="student-search" placeholder="Search students...">
+                    <span class="search-icon">🔍</span>
+                </div>
+                <select id="blood-group-filter">
+                    <option value="">All Blood Groups</option>
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                </select>
+                <button id="add-student-btn" class="primary-btn">
+                    <span>+</span> Add Student
+                </button>
+            </div>
+
+            <div class="grid" id="students-grid">
+                <!-- Student cards will be injected here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Class of 2026</h3>
+                <p>Department of Computer Science & Engineering</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#timetable">Schedule</a></li>
+                    <li><a href="#resources">Resources</a></li>
+                    <li><a href="#students">Students</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">📘</a>
+                    <a href="#" aria-label="Instagram">📷</a>
+                    <a href="#" aria-label="LinkedIn">💼</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Class Web Portal. Built with passion and innovation.</p>
+        </div>
+    </footer>
+
+    <!-- Student Detail Modal -->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal">
+            <button class="close-modal" id="close-modal" aria-label="Close modal">&times;</button>
+            <div class="modal-image-container">
+                <img src="" alt="Student Photo" class="modal-image" id="modal-img">
+            </div>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-name" id="modal-name">Student Name</h2>
+                    <p class="modal-subtitle" id="modal-reg">Reg No: 123456</p>
+                </div>
+
+                <div class="info-grid">
+                    <div class="info-item">
+                        <label>Department</label>
+                        <span id="modal-dept">CSE</span>
+                    </div>
+                    <div class="info-item">
+                        <label>Date of Birth</label>
+                        <span id="modal-dob">01 Jan 2000</span>
+                    </div>
+                    <div class="info-item">
+                        <label>Email</label>
+                        <span id="modal-email">student@example.com</span>
+                    </div>
+                    <div class="info-item">
+                        <label>Phone</label>
+                        <span id="modal-phone">123-456-7890</span>
+                    </div>
+                    <div class="info-item">
+                        <label>Dream Job</label>
+                        <span id="modal-job">Software Engineer</span>
+                    </div>
+                </div>
+
+                <div class="info-item" style="margin-bottom: 1.5rem;">
+                    <label>Skills</label>
+                    <div class="tags" id="modal-skills">
+                        <!-- Skills tags -->
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <label>Achievements</label>
+                    <ul class="achievements-list" id="modal-achievements">
+                        <!-- List items -->
+                    </ul>
+                </div>
+
+                <div class="info-item" style="margin-top: 1.5rem;">
+                    <label>Hobbies</label>
+                    <div class="tags" id="modal-hobbies">
+                        <!-- Hobbies tags -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Student Modal -->
+    <div class="modal-overlay" id="add-student-modal-overlay">
+        <div class="modal" style="max-width: 600px; grid-template-columns: 1fr;">
+            <button class="close-modal" id="close-add-modal" aria-label="Close modal">&times;</button>
+            <div class="modal-content" style="padding: 2rem;">
+                <h2 class="modal-name" style="text-align: center; margin-bottom: 2rem;">Add New Student</h2>
+                <form id="add-student-form">
+                    <div class="form-group">
+                        <label for="new-name">Name</label>
+                        <input type="text" id="new-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="new-reg">Register Number</label>
+                        <input type="text" id="new-reg" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="new-dept">Department</label>
+                        <select id="new-dept">
+                            <option value="CSE">CSE</option>
+                            <option value="ECE">ECE</option>
+                            <option value="EEE">EEE</option>
+                            <option value="IT">IT</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="new-dob">Date of Birth</label>
+                        <input type="date" id="new-dob" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="new-email">Email</label>
+                        <input type="email" id="new-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="new-phone">Phone</label>
+                        <input type="tel" id="new-phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="new-skills">Skills (comma separated)</label>
+                        <input type="text" id="new-skills" placeholder="e.g. Java, Python, React">
+                    </div>
+                    <div class="form-group">
+                        <label for="new-hobbies">Hobbies (comma separated)</label>
+                        <input type="text" id="new-hobbies" placeholder="e.g. Reading, Gaming">
+                    </div>
+                    <div class="form-group">
+                        <label for="new-job">Dream Job</label>
+                        <input type="text" id="new-job" required>
+                    </div>
+                    <button type="submit" class="primary-btn" style="width: 100%; margin-top: 1rem;">Add
+                        Student</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+        ↑
+    </button>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
