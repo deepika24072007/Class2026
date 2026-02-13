@@ -288,7 +288,7 @@ function filterStudents() {
 }
 
 // Mock Data 
-const CLASS_DATA = {
+const DEFAULT_DATA = {
     className: "Class of 2026",
     department: "Computer Science & Engineering",
     staff: [
@@ -362,13 +362,13 @@ const CLASS_DATA = {
             id: 'r1',
             name: "John Doe",
             role: "Class Rep (Boys)",
-            photo: "https://api.dicebear.com/7.x/avataaars/svg?seed=John",
+            photo: "https://api.dicebear.com/7.x/fun-emoji/svg?seed=John",
         },
         {
             id: 'r2',
             name: "Jane Smith",
             role: "Class Rep (Girls)",
-            photo: "https://api.dicebear.com/7.x/avataaars/svg?seed=Jane",
+            photo: "https://api.dicebear.com/7.x/fun-emoji/svg?seed=Jane",
         }
     ],
     students: [
@@ -632,6 +632,15 @@ const CLASS_DATA = {
             residence: { type: "Dayscholar", address: "Papiireddipatti", taluk: "Papiireddipatti", district: "Dharmapuri", state: "Tamil Nadu", pincode: "636905" },
             contact: { email: "srikumar@example.com", phone: "-", fatherName: "Sathya. M", motherName: "-" },
             details: { skills: ["-"], hobbies: ["-"], achievements: [], dreamJob: "-" }
+        },
+        {
+            id: 30,
+            personal: { name: "Thirumoorthy. M", initial: "M", gender: "Male", dob: "2007-01-24", nationality: "Indian", religion: "Hindu", community: "MBC" },
+            academic: { regNo: "622624104049", yearJoin: 2024, regulation: "2021", admissionQuota: "GQ", department: "CSE" },
+            health: { bloodGroup: "O+" },
+            residence: { type: "Dayscholar", address: "Dharmapuri", taluk: "Dharmapuri", district: "Dharmapuri", state: "Tamil Nadu", pincode: "636701" },
+            contact: { email: "thirumoorthy@example.com", phone: "9000000000", fatherName: "Muthu", motherName: "-" },
+            details: { skills: ["Sports"], hobbies: ["Cricket"], achievements: [], dreamJob: "Police" }
         }
     ],
     announcements: [
@@ -700,7 +709,7 @@ function renderStudents(studentsToRender = CLASS_DATA.students) {
 
         return `
         <div class="card" onclick="openStudentModal(${student.id})">
-            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=${student.personal.name}" class="card-image" alt="${student.personal.name}">
+            <img src="img/${student.academic.regNo}.jpeg" onerror="this.onerror=null; this.src='https://api.dicebear.com/7.x/fun-emoji/svg?seed=${student.personal.name}'" class="card-image" alt="${student.personal.name}">
             <div class="card-info">
                 ${isBirthday ? '<div style="background: #fbbf24; color: #000; padding: 0.5rem; text-align: center; border-radius: 8px; margin-bottom: 0.5rem; font-weight: bold; font-size: 0.9rem;">🎂 Happy Birthday!</div>' : ''}
                 <h3 class="card-name">${student.personal.name}</h3>
@@ -728,7 +737,12 @@ function openStudentModal(id) {
     if (!student) return;
 
     // Populate Modal
-    document.getElementById('modal-img').src = `https://api.dicebear.com/7.x/avataaars/svg?seed=${student.personal.name}`;
+    const modalImg = document.getElementById('modal-img');
+    modalImg.src = `img/${student.academic.regNo}.jpeg`;
+    modalImg.onerror = function () {
+        this.src = `https://api.dicebear.com/7.x/fun-emoji/svg?seed=${student.personal.name}`;
+    };
+
     document.getElementById('modal-name').textContent = student.personal.name;
     document.getElementById('modal-reg').textContent = `Reg No: ${student.academic.regNo}`;
 
@@ -874,27 +888,336 @@ const addStudentModalOverlay = document.getElementById('add-student-modal-overla
 const closeAddStudentModalBtn = document.getElementById('close-add-modal');
 const addStudentForm = document.getElementById('add-student-form');
 
-function openAddStudentModal() {
+const addStudentModalTitle = document.querySelector('#add-student-modal-overlay .modal-name');
+let editingStudentId = null;
+
+function openAddStudentModal(studentData = null) {
     addStudentModalOverlay.classList.add('active');
     document.body.style.overflow = 'hidden';
+
+    if (studentData) {
+        // Edit Mode
+        editingStudentId = studentData.id;
+        addStudentModalTitle.textContent = "Edit Student";
+
+        document.getElementById('new-name').value = studentData.personal.name;
+        document.getElementById('new-reg').value = studentData.academic.regNo;
+        document.getElementById('new-dept').value = studentData.academic.department;
+        document.getElementById('new-dob').value = studentData.personal.dob;
+        document.getElementById('new-email').value = studentData.contact.email;
+        document.getElementById('new-phone').value = studentData.contact.phone;
+        document.getElementById('new-skills').value = studentData.details.skills.join(', ');
+        document.getElementById('new-hobbies').value = studentData.details.hobbies.join(', ');
+        document.getElementById('new-job').value = studentData.details.dreamJob;
+
+        // Reg No should not be editable if it's the key, but let's allow fixes
+    } else {
+        // Add Mode
+        editingStudentId = null;
+        addStudentModalTitle.textContent = "Add New Student";
+        addStudentForm.reset();
+    }
 }
 
 function closeAddStudentModal() {
     addStudentModalOverlay.classList.remove('active');
     document.body.style.overflow = '';
+    editingStudentId = null;
 }
 
-addStudentBtn.addEventListener('click', openAddStudentModal);
+addStudentBtn.addEventListener('click', () => {
+    // Already authenticated via Admin Login
+    openAddStudentModal();
+});
 closeAddStudentModalBtn.addEventListener('click', closeAddStudentModal);
 
 addStudentForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    // For now, disabling add student as form needs major update to match new schema
-    alert('Add Student feature under maintenance for schema upgrade.');
+
+    const studentData = {
+        id: editingStudentId || Date.now(),
+        personal: {
+            name: document.getElementById('new-name').value,
+            initial: "",
+            gender: "Not Specified",
+            dob: document.getElementById('new-dob').value,
+            nationality: "Indian",
+            religion: "",
+            community: ""
+        },
+        academic: {
+            regNo: document.getElementById('new-reg').value,
+            yearJoin: 2026,
+            regulation: "2021",
+            admissionQuota: "Management",
+            department: document.getElementById('new-dept').value
+        },
+        health: { bloodGroup: "" },
+        residence: { type: "Dayscholar", address: "", taluk: "", district: "TBD", state: "", pincode: "" },
+        contact: {
+            email: document.getElementById('new-email').value,
+            phone: document.getElementById('new-phone').value,
+            fatherName: "",
+            motherName: ""
+        },
+        details: {
+            skills: document.getElementById('new-skills').value.split(',').map(s => s.trim()).filter(s => s),
+            hobbies: document.getElementById('new-hobbies').value.split(',').map(s => s.trim()).filter(s => s),
+            achievements: [],
+            dreamJob: document.getElementById('new-job').value
+        }
+    };
+
+    if (editingStudentId) {
+        // Update existing
+        const index = CLASS_DATA.students.findIndex(s => s.id === editingStudentId);
+        if (index !== -1) {
+            CLASS_DATA.students[index] = { ...CLASS_DATA.students[index], ...studentData };
+            showToast("Student updated successfully!", "success");
+        }
+    } else {
+        // Create new
+        CLASS_DATA.students.push(studentData);
+        showToast("Student added successfully!", "success");
+    }
+
+    saveData();
     closeAddStudentModal();
+});
+
+// Admin Search Logic
+document.getElementById('admin-search-btn')?.addEventListener('click', () => {
+    const regNo = document.getElementById('admin-search-reg').value.trim();
+    if (!regNo) return showToast("Please enter a Roll Number", "error");
+
+    const student = CLASS_DATA.students.find(s => s.academic.regNo === regNo);
+    if (student) {
+        openAddStudentModal(student);
+    } else {
+        showToast("Student not found!", "error");
+    }
 });
 
 // Close modal on outside click
 addStudentModalOverlay.addEventListener('click', (e) => {
     if (e.target === addStudentModalOverlay) closeAddStudentModal();
+});
+
+// ==========================================
+// ADMIN & DATA PERSISTENCE
+// ==========================================
+
+// Load Data
+function loadData() {
+    const saved = localStorage.getItem('classData');
+    return saved ? JSON.parse(saved) : null;
+}
+
+function saveData() {
+    localStorage.setItem('classData', JSON.stringify(CLASS_DATA));
+    // Refresh UI
+    renderStudents(CLASS_DATA.students);
+    renderStaff();
+    updateStats();
+    if (typeof renderAnnouncements === 'function') renderAnnouncements();
+    // Also refresh admin tables if open
+    if (document.getElementById('admin-modal-overlay').classList.contains('active')) {
+        renderAdminStudents();
+        renderAdminStaff();
+    }
+}
+
+// Toast Notification
+function showToast(message, type = 'info') {
+    const container = document.getElementById('toast-container');
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+
+    let icon = 'ℹ️';
+    if (type === 'success') icon = '✅';
+    if (type === 'error') icon = '❌';
+
+    toast.innerHTML = `
+        <span class="toast-icon">${icon}</span>
+        <span class="toast-message">${message}</span>
+    `;
+
+    container.appendChild(toast);
+
+    // Remove after 3 seconds
+    setTimeout(() => {
+        toast.style.animation = 'fadeOut 0.3s ease forwards';
+        setTimeout(() => {
+            toast.remove();
+        }, 300);
+    }, 3000);
+}
+
+// Initialize Global Data
+let CLASS_DATA = loadData() || DEFAULT_DATA;
+
+// Admin Login
+document.getElementById('admin-login-link').addEventListener('click', (e) => {
+    e.preventDefault();
+    const user = prompt("Enter Admin Username:");
+    if (user !== "admin") {
+        showToast("Invalid Username!", "error");
+        return;
+    }
+    const password = prompt("Enter Admin Password:");
+    if (password === "deepika") {
+        openAdminModal();
+        showToast("Welcome Admin!", "success");
+    } else {
+        showToast("Invalid Password!", "error");
+    }
+});
+
+// Student Login Logic
+const studentLoginLink = document.getElementById('student-login-link');
+const studentLoginModal = document.getElementById('student-login-modal');
+const closeStudentLoginBtn = document.getElementById('close-student-login');
+const studentLoginForm = document.getElementById('student-login-form');
+
+studentLoginLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    studentLoginModal.classList.add('active');
+});
+
+closeStudentLoginBtn.addEventListener('click', () => {
+    studentLoginModal.classList.remove('active');
+});
+
+studentLoginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const regNo = document.getElementById('login-reg-no').value.trim();
+    const dob = document.getElementById('login-dob').value;
+
+    const student = CLASS_DATA.students.find(s => s.academic.regNo === regNo);
+
+    if (student) {
+        if (student.personal.dob === dob) {
+            // Success
+            studentLoginModal.classList.remove('active');
+            openAddStudentModal(student); // Open Edit Modal
+            showToast(`Welcome back, ${student.personal.name}!`, "success");
+        } else {
+            showToast("Incorrect Date of Birth!", "error");
+        }
+    } else {
+        showToast("Student not found!", "error");
+    }
+});
+
+
+// Admin Modal Logic
+const adminModalOverlay = document.getElementById('admin-modal-overlay');
+const closeAdminModalBtn = document.getElementById('close-admin-modal');
+const tabBtns = document.querySelectorAll('.tab-btn');
+const tabContents = document.querySelectorAll('.tab-content');
+
+function openAdminModal() {
+    renderAdminStudents();
+    renderAdminStaff();
+    adminModalOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeAdminModal() {
+    adminModalOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+closeAdminModalBtn.addEventListener('click', closeAdminModal);
+adminModalOverlay.addEventListener('click', (e) => {
+    if (e.target === adminModalOverlay) closeAdminModal();
+});
+
+// Tabs
+tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        // Remove active class
+        tabBtns.forEach(b => b.classList.remove('active'));
+        tabContents.forEach(c => c.classList.remove('active'));
+
+        // Add active
+        btn.classList.add('active');
+        document.getElementById(`tab-${btn.dataset.tab}`).classList.add('active');
+    });
+});
+
+// Admin Render Functions
+function renderAdminStudents() {
+    const tbody = document.querySelector('#admin-students-table tbody');
+    tbody.innerHTML = CLASS_DATA.students.map(s => `
+        <tr>
+            <td>${s.academic.regNo}</td>
+            <td>${s.personal.name}</td>
+            <td>${s.academic.department}</td>
+            <td>
+                <button class="icon-btn delete-btn" onclick="deleteStudent(${s.id})" title="Delete">🗑️</button>
+            </td>
+        </tr>
+    `).join('');
+}
+
+function renderAdminStaff() {
+    const tbody = document.querySelector('#admin-staff-table tbody');
+    const allStaff = [...CLASS_DATA.staff]; // Only staff, ignoring reps for now for simplicity or include them? Let's stick to staff array
+    tbody.innerHTML = allStaff.map(s => `
+        <tr>
+            <td>${s.name}</td>
+            <td>${s.role}</td>
+            <td>${s.subjects}</td>
+            <td>
+                <button class="icon-btn delete-btn" onclick="deleteStaff('${s.id}')" title="Delete">🗑️</button>
+            </td>
+        </tr>
+    `).join('');
+}
+
+// Actions
+window.deleteStudent = function (id) {
+    if (confirm("Are you sure you want to delete this student?")) {
+        CLASS_DATA.students = CLASS_DATA.students.filter(s => s.id !== id);
+        saveData();
+    }
+};
+
+window.deleteStaff = function (id) {
+    if (confirm("Are you sure you want to delete this staff member?")) {
+        CLASS_DATA.staff = CLASS_DATA.staff.filter(s => s.id !== id);
+        saveData();
+    }
+};
+
+// Staff Add Logic
+const staffFormModal = document.getElementById('staff-form-modal');
+const staffForm = document.getElementById('staff-form');
+
+window.openAddStaffModal = function () {
+    document.getElementById('staff-modal-title').textContent = "Add Staff";
+    staffForm.reset();
+    document.getElementById('staff-id').value = '';
+    staffFormModal.classList.add('active');
+};
+
+window.closeStaffFormModal = function () {
+    staffFormModal.classList.remove('active');
+};
+
+staffForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const newStaff = {
+        id: 's' + Date.now(),
+        name: document.getElementById('staff-name').value,
+        role: document.getElementById('staff-role').value,
+        subjects: document.getElementById('staff-subject').value,
+        email: document.getElementById('staff-email').value,
+        photo: document.getElementById('staff-photo').value || "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=300&h=300"
+    };
+
+    CLASS_DATA.staff.push(newStaff);
+    saveData();
+    closeStaffFormModal();
 });

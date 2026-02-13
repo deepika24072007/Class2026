@@ -367,9 +367,17 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Class Web Portal. Built with passion and innovation.</p>
+            <p>&copy; 2026 Class Web Portal. Built with passion and innovation. |
+                <a href="#" id="admin-login-link"
+                    style="color: #64748b; text-decoration: none; font-size: 0.8rem;">Admin Login</a> |
+                <a href="#" id="student-login-link"
+                    style="color: #64748b; text-decoration: none; font-size: 0.8rem;">Student Login</a>
+            </p>
         </div>
     </footer>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
 
     <!-- Student Detail Modal -->
     <div class="modal-overlay" id="modal-overlay">
@@ -433,7 +441,7 @@
 
     <!-- Add Student Modal -->
     <div class="modal-overlay" id="add-student-modal-overlay">
-        <div class="modal" style="max-width: 600px; grid-template-columns: 1fr;">
+        <div class="modal modal-auth">
             <button class="close-modal" id="close-add-modal" aria-label="Close modal">&times;</button>
             <div class="modal-content" style="padding: 2rem;">
                 <h2 class="modal-name" style="text-align: center; margin-bottom: 2rem;">Add New Student</h2>
@@ -481,6 +489,131 @@
                     </div>
                     <button type="submit" class="primary-btn" style="width: 100%; margin-top: 1rem;">Add
                         Student</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Modal -->
+    <div class="modal-overlay" id="admin-modal-overlay">
+        <div class="modal" style="max-width: 900px; width: 95%;">
+            <button class="close-modal" id="close-admin-modal" aria-label="Close modal">&times;</button>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-name">Admin Dashboard</h2>
+                    <p class="modal-subtitle">Manage Class Data</p>
+                </div>
+
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="students">Students</button>
+                    <button class="tab-btn" data-tab="staff">Staff</button>
+                </div>
+
+                <div class="tab-content active" id="tab-students">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; gap: 1rem; flex-wrap: wrap;">
+                        <h3>Student Records</h3>
+                        <div style="display: flex; gap: 0.5rem; flex: 1; max-width: 400px;">
+                            <input type="text" id="admin-search-reg" placeholder="Enter Roll No to Edit..."
+                                style="padding: 0.5rem; border: 1px solid #cbd5e1; border-radius: 6px; flex: 1;">
+                            <button class="primary-btn" id="admin-search-btn"
+                                style="padding: 0.5rem 1rem;">Search</button>
+                        </div>
+                        <button class="primary-btn" id="add-student-btn">+ Add Student</button>
+                    </div>
+                    <div class="table-container">
+                        <table class="timetable" id="admin-students-table">
+                            <thead>
+                                <tr>
+                                    <th>Reg No</th>
+                                    <th>Name</th>
+                                    <th>Dept</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="tab-staff">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <h3>Staff Records</h3>
+                        <button class="primary-btn" onclick="openAddStaffModal()">+ Add Staff</button>
+                    </div>
+                    <div class="table-container">
+                        <table class="timetable" id="admin-staff-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Role</th>
+                                    <th>Subject</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Staff Modal -->
+    <div class="modal-overlay" id="staff-form-modal">
+        <div class="modal modal-auth">
+            <button class="close-modal" onclick="closeStaffFormModal()">&times;</button>
+            <div class="modal-content">
+                <h2 class="modal-name" id="staff-modal-title">Add Staff</h2>
+                <form id="staff-form">
+                    <input type="hidden" id="staff-id">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" id="staff-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Role</label>
+                        <input type="text" id="staff-role" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Subject</label>
+                        <input type="text" id="staff-subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="staff-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Photo URL</label>
+                        <input type="url" id="staff-photo">
+                    </div>
+                    <button type="submit" class="primary-btn" style="width: 100%; margin-top: 1rem;">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Student Login Modal -->
+    <div class="modal-overlay" id="student-login-modal">
+        <div class="modal modal-auth">
+            <button class="close-modal" id="close-student-login">&times;</button>
+            <div class="modal-content">
+                <h2 class="modal-name">Student Login</h2>
+                <form id="student-login-form">
+                    <div class="form-group">
+                        <label>Register Number</label>
+                        <input type="text" id="login-reg-no" placeholder="Ex: 622624104001" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Date of Birth</label>
+                        <input type="date" id="login-dob" required>
+                    </div>
+                    <button type="submit" class="primary-btn" style="width: 100%; margin-top: 1rem;">Login</button>
                 </form>
             </div>
         </div>

@@ -844,11 +844,13 @@ section {
 }
 
 .card-role {
-    color: var(--accent-color);
+    color: #2563eb;
+    /* Darker accent color */
     font-size: 0.9rem;
-    font-weight: 600;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
 }
 
 /* ==========================================
@@ -1065,6 +1067,27 @@ section {
     font-size: 0.95rem;
 }
 
+.tag-small {
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #1e293b;
+    /* Darker text */
+}
+
+.tag-district {
+    background: #e0f2fe;
+    color: #0369a1;
+    /* Darker blue */
+}
+
+.tag-residence {
+    background: #f1f5f9;
+    color: #334155;
+    /* Darker slate */
+}
+
 .res-link:hover {
     background: var(--accent-color);
     color: white;
@@ -1257,6 +1280,12 @@ section {
     border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
+.modal.modal-auth {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
 .modal-overlay.active .modal {
     transform: scale(1) translateY(0);
 }
@@ -1418,10 +1447,11 @@ section {
 
 .form-group label {
     display: block;
-    font-size: 0.9rem;
-    margin-bottom: 0.625rem;
-    color: var(--text-color);
+    margin-bottom: 0.5rem;
     font-weight: 600;
+    color: #1e293b;
+    /* Darker text for visibility */
+    font-size: 0.9rem;
 }
 
 .form-group input,
